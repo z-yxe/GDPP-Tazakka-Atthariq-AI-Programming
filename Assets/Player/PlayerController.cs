@@ -1,12 +1,21 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Action onPowerUpStart;
+    public Action onPowerUpStop;
+
     [SerializeField]
-    private float speed = 100f;
+    private float speed;
     [SerializeField]
     private Camera cam;
+    [SerializeField]
+    private float powerUpDuration;
+
     private Rigidbody rb;
+    private Coroutine powerUpCoroutine;
 
     private void Awake()
     {
@@ -33,5 +42,30 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void PickedPowerUp()
+    {
+        if (powerUpCoroutine != null)
+        {
+            StopCoroutine(powerUpCoroutine);
+        }
+
+        powerUpCoroutine = StartCoroutine(StartPowerUp());
+    }
+
+    private IEnumerator StartPowerUp()
+    {
+        if (onPowerUpStart != null)
+        {
+            onPowerUpStart();
+        }
+
+        yield return new WaitForSeconds(powerUpDuration);
+        
+        if (onPowerUpStop != null)
+        {
+            onPowerUpStop();
+        }
     }
 }

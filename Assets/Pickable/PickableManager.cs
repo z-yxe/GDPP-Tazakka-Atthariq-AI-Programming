@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class PickableManager : MonoBehaviour
 {
+    [SerializeField]
+    private PlayerController player;
     private List<Pickable> pickableList = new List<Pickable>();
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         InitPickableList();
@@ -20,14 +21,16 @@ public class PickableManager : MonoBehaviour
             pickableList.Add(pickableObjects[i]);
             pickableObjects[i].onPicked += OnPickablePick;
         }
-
-        Debug.Log("Pickable List " + pickableList.Count);
     }
 
     public void OnPickablePick(Pickable pickable)
     {
         pickableList.Remove(pickable);
-        Debug.Log("Pickable List " + pickableList.Count);
+
+        if (pickable.pickableObject == PickableType.PowerUp)
+        {
+            player.PickedPowerUp();
+        }
 
         if (pickableList.Count <= 0)
         {
