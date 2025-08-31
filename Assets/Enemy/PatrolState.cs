@@ -8,6 +8,7 @@ public class PatrolState : BaseState
     public void EnterState(EnemyController enemy)
     {
         isMoving = false;
+        enemy.animator.SetTrigger("PatrolState");
     }
 
     public void UpdateState(EnemyController enemy)
@@ -26,7 +27,6 @@ public class PatrolState : BaseState
         }
         else
         {
-
             if (Vector3.Distance(destination, enemy.transform.position) <= 0.1)
             {
                 isMoving = false;
@@ -36,6 +36,6 @@ public class PatrolState : BaseState
 
     public void ExitState(EnemyController enemy)
     {
-        Debug.Log("Stop Patrolling");
+        // logic if there is any mechanic in stop patrol condition
     }
 }

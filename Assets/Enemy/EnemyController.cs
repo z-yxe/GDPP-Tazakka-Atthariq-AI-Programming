@@ -8,6 +8,8 @@ public class EnemyController : MonoBehaviour
 
     [HideInInspector]
     public NavMeshAgent navMeshAgent;
+    [HideInInspector]
+    public Animator animator;
     public PlayerController player;
 
     public PatrolState patrolState = new PatrolState();
@@ -19,6 +21,8 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
+        
         currentState = patrolState;
         currentState.EnterState(this);
 

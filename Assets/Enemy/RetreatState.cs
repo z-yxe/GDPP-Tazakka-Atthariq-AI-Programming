@@ -4,7 +4,7 @@ public class RetreatState : BaseState
 {
     public void EnterState(EnemyController enemy) 
     {
-        Debug.Log("Start Retreatting");
+        enemy.animator.SetTrigger("RetreatState");
     }
 
     public void UpdateState(EnemyController enemy) 
@@ -17,6 +17,6 @@ public class RetreatState : BaseState
 
     public void ExitState(EnemyController enemy)
     {
-        Debug.Log("Stop Retreatting");
+        // logic if there is any mechanic in stop retreat condition
     }
 }

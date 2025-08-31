@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class ChaseState : BaseState
 {
-    public void EnterState(EnemyController enemy) 
+    public void EnterState(EnemyController enemy)
     {
-        Debug.Log("Start Chasing");
+        enemy.animator.SetTrigger("ChaseState");
     }
 
     public void UpdateState(EnemyController enemy) 
@@ -22,6 +22,6 @@ public class ChaseState : BaseState
 
     public void ExitState(EnemyController enemy)
     {
-        Debug.Log("Stop Chasing");
+        // logic if there is any mechanic in stop chasing condition
     }
 }
