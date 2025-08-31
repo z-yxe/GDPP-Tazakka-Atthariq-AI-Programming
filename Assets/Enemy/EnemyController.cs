@@ -22,7 +22,7 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        
+
         currentState = patrolState;
         currentState.EnterState(this);
 
@@ -61,5 +61,21 @@ public class EnemyController : MonoBehaviour
     private void StopRetreating()
     {
         SwitchState(patrolState);
+    }
+
+    public void Dead()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (currentState != retreatState)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                collision.gameObject.GetComponent<PlayerController>().Dead();
+            }
+        }
     }
 }

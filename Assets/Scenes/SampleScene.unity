@@ -8082,7 +8082,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 15
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -8090,8 +8090,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.33571702
-      value: 0.99404144
+      time: 0.17001063
+      value: 1.0029793
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -8101,8 +8101,8 @@ AudioSource:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -1.0526316
-      outSlope: -1.0526316
+      inSlope: -1.0714285
+      outSlope: -1.0714285
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
