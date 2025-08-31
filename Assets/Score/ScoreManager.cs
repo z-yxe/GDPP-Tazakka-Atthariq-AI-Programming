@@ -10,8 +10,6 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        currentScore = 0;
-        maxScore = 0;
         UpdateUI();
     }
 
