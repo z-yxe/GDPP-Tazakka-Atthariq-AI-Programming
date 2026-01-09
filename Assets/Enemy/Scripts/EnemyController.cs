@@ -1,15 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
-    public List<Transform> waypoints = new List<Transform>();
-
-    [HideInInspector]
+    public List<Transform> waypoints;
     public NavMeshAgent navMeshAgent;
-    [HideInInspector]
     public Animator animator;
     public PlayerController player;
 
@@ -17,17 +13,21 @@ public class EnemyController : MonoBehaviour
     public ChaseState chaseState = new ChaseState();
     public RetreatState retreatState = new RetreatState();
 
+    public float healthPoint = 50f;
+
     private BaseState currentState;
     public float chaseDistance;
 
+    public void Setup (List<Transform> waypoints, PlayerController player)
+    {
+        this.waypoints = waypoints;
+        this.player = player;
+    }
+
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-
         currentState = patrolState;
         currentState.EnterState(this);
-
-        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     private void Start()
@@ -64,9 +64,14 @@ public class EnemyController : MonoBehaviour
         SwitchState(patrolState);
     }
 
-    public void Dead()
+    public void TakeDamage(float damage)
     {
-        gameObject.SetActive(false);
+        healthPoint -= damage;
+
+        if (healthPoint <= 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

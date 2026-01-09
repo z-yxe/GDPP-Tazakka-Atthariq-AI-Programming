@@ -21,13 +21,17 @@ public class PatrolState : BaseState
         if (!isMoving)
         {
             isMoving = true;
-            int index = Random.Range(0, enemy.waypoints.Count);
-            destination = enemy.waypoints[index].position;
-            enemy.navMeshAgent.destination = destination;
+            if (enemy.waypoints.Count > 0) 
+            {
+                int index = Random.Range(0, enemy.waypoints.Count);
+                destination = enemy.waypoints[index].position;
+                enemy.navMeshAgent.destination = destination;
+            }
         }
         else
         {
-            if (Vector3.Distance(destination, enemy.transform.position) <= 0.1)
+            if (!enemy.navMeshAgent.pathPending && 
+                enemy.navMeshAgent.remainingDistance <= enemy.navMeshAgent.stoppingDistance + 0.5f)
             {
                 isMoving = false;
             }
