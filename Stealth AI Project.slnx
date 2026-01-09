@@ -45,7 +45,6 @@
   <Project Path="Unity.VisualScripting.State.csproj" />
   <Project Path="Unity.AI.Navigation.Updater.csproj" />
   <Project Path="UnityEditor.UI.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.AI.Navigation.Editor.csproj" />
   <Project Path="Unity.2D.Sprite.Editor.csproj" />
   <Project Path="Unity.Multiplayer.Center.Common.csproj" />
@@ -56,6 +55,7 @@
   <Project Path="Unity.Collections.CodeGen.csproj" />
   <Project Path="Unity.Mathematics.Editor.csproj" />
   <Project Path="Unity.VisualScripting.SettingsProvider.Editor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.ProBuilder.AssetIdRemapUtility.csproj" />
   <Project Path="Unity.Settings.Editor.csproj" />
   <Project Path="Unity.InputSystem.TestFramework.csproj" />
